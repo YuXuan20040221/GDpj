@@ -17,7 +17,8 @@ GIT網址: [這邊😺](https://github.com/YuXuan20040221/GDpj)
 `git checkout 分支名`  
 再傳
 
-資料集跟env名字幫我一樣~才不會肥肥的整包上GIT~幫我一樣~才不會肥肥的整包上GIT~  
+資料集跟env名字幫我統一一下~  
+才不會肥肥的整包上GIT~
 
 (其他想到再補充)
 
