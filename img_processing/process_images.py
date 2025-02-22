@@ -1,8 +1,38 @@
 import cv2
 import os
+import numpy as np
+import sys
+
+
+def main():
+    # 檢查是否有輸入圖片路徑
+    if len(sys.argv) < 2:
+        print("❌ 請提供圖片路徑")
+        sys.exit(1)
+
+    # 取得輸入圖片路徑
+    img_path = sys.argv[1]
+
+    # 確保圖片存在
+    if not os.path.exists(img_path):
+        print(f"❌ 找不到圖片：{img_path}")
+        sys.exit(1)
+
+    input_img = cv2.imread(img_path)
+    output_img = processing(input_img)
+
+    # 顯示原圖與處理後的結果
+    combined = np.hstack(
+        [cv2.resize(input_img, (500, 500)), cv2.resize(output_img, (500, 500))]
+    )  # 水平拼接相片
+    cv2.imshow("Original | Processed", combined)
+
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
 
 def process_image(input_path, output_path):
-    """ 讀取圖片、進行處理、存圖片 """
+    """讀取圖片、進行處理、存圖片"""
     try:
         image = cv2.imread(input_path)  # 讀取圖片
         if image is None:
@@ -27,7 +57,13 @@ def process_image(input_path, output_path):
         print(f"❌ 發生錯誤：{e}")
         return False
 
+
 def processing(img):
-    """ 圖片處理 """
-    processed_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    """圖片處理"""
+    kernel = np.ones((3, 3), np.float32) / 9
+    processed_img = cv2.filter2D(img, -1, kernel)
     return processed_img
+
+
+if __name__ == "__main__":
+    main()
