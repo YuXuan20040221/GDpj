@@ -73,6 +73,8 @@ GIT網址: [這邊😺](https://github.com/YuXuan20040221/GDpj)
     ```git checkout 分支名```  
     *(終端後面會出現`()`跟分支名字)*
 
+### git flow
+[gitflow介紹與規範](https://www.cnblogs.com/kevin-ying/p/14329768.html)
 
 ## 目錄架構
 ```
