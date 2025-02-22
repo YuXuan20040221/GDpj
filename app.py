@@ -1,5 +1,6 @@
 import subprocess
 import sys
+import time
 
 # 取得目前虛擬環境的 Python 執行路徑
 python_path = sys.executable
@@ -7,7 +8,10 @@ python_path = sys.executable
 img_processing_path = "img_processing/main.py"
 
 try:
+    start_time = time.time()
     subprocess.run([python_path, img_processing_path], check=True)
+    end_time = time.time()
     print(f"✅ {img_processing_path} 執行成功")
+    print(f"- 耗時 : {end_time - start_time} 秒")
 except subprocess.CalledProcessError as e:
     print(f"❌ {img_processing_path} 執行失敗：{e}")

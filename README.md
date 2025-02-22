@@ -4,9 +4,13 @@
 進度 : 影像處理  
 先摸摸看OpenCV怎麼用~ 反正報告第三周開始~
 
---------------------------------------------------
-GIT網址: [這邊😺](https://github.com/YuXuan20040221/GDpj)  
-筆記本: [onenote📒](https://1drv.ms/o/c/12296dadc52ae07c/ElysFhkG1M9On5YW2SsNj_EB2Z-11IqTPEMgS-L8gNm2CQ?e=WKIdJp)
+----------
+
+GIT網址: [GIT這邊😺](https://github.com/YuXuan20040221/GDpj)  
+筆記本: [onenote📒](https://1drv.ms/o/c/12296dadc52ae07c/ElysFhkG1M9On5YW2SsNj_EB2Z-11IqTPEMgS-L8gNm2CQ?e=WKIdJp)  
+實驗記錄表格: [Google sheet✏️](https://docs.google.com/spreadsheets/d/1NRx1Qe7GxQ4leoN1b7u8ACHFELsfheebKNrmKK1_b4c/edit?usp=sharing)
+
+--------------
 
 第一次(還沒有虛擬環境時)，幫我:  
 `python -m venv env`
@@ -74,6 +78,8 @@ GIT網址: [這邊😺](https://github.com/YuXuan20040221/GDpj)
     *(終端後面會出現`()`跟分支名字)*
 
 
+# 設定
+
 ## 目錄架構
 ```
 |-- *dataset
@@ -98,6 +104,9 @@ GIT網址: [這邊😺](https://github.com/YuXuan20040221/GDpj)
 - `img`: 處理前圖片
 - `processed_img`: 處理後圖片
 
+## 下載項目
+- numpy: 建立數值矩陣
+- OpenCV: 影像處理
 
 # 資源
 
