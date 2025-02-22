@@ -1,12 +1,13 @@
 import glob
 import os
+import time
 from process_images import process_image  # 引入處理函式
 
 # 設定輸入與輸出資料夾
 input_dir = "dataset/Railway_Track/Train/Defective/"  # 原始圖片資料夾
-output_dir = "dataset/Processed/"  # 處理後圖片的資料夾
 
-
+output_dir = f"dataset/Processed/{time.strftime('%Y%m%d_%H%M%S')}/"  # 處理後圖片的資料夾
+os.makedirs(output_dir, exist_ok=True)  # 資料夾不在就生一個
 
 # 找出所有圖片檔案
 image_paths = glob.glob(input_dir + "*.jpg") + glob.glob(input_dir + "*.png")
