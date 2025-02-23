@@ -20,6 +20,8 @@ def main():
 
     input_img = cv2.imread(img_path)
     output_img = processing(input_img)
+    if len(output_img.shape) == 2:
+        output_img = cv2.cvtColor(output_img, cv2.COLOR_GRAY2BGR)
 
     # 顯示原圖與處理後的結果
     combined = np.hstack(
@@ -60,8 +62,8 @@ def process_image(input_path, output_path):
 
 def processing(img):
     """圖片處理"""
-    kernel = np.ones((3, 3), np.float32) / 9
-    processed_img = cv2.filter2D(img, -1, kernel)
+    processed_img = cv2.cvtColor(processed_img, cv2.COLOR_BGR2GRAY)  # 轉為灰階
+    processed_img = cv2.Canny(processed_img, 100, 200)
     return processed_img
 
 

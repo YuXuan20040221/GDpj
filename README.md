@@ -89,6 +89,9 @@ GIT網址: [GIT這邊😺](https://github.com/YuXuan20040221/GDpj)
 |--img_processing  
 |    |--main.py (讀取圖片)  
 |    |--process_images.py (處理圖片)  
+|--train_model
+|    |--train_model.py (訓練模型)
+|    |--test_model.py (測試模型)
 |--.gitignore  
 |--app.py  
 |--README.md  
