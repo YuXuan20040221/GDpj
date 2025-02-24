@@ -1,0 +1,6 @@
+train: dataset/train/images  # 訓練圖片路徑
+val: dataset/train/labels      # 驗證圖片路徑
+
+nc: 1
+# 類別名稱
+names: ['pothole']  
