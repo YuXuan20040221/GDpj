@@ -3,6 +3,7 @@ import os
 import sys
 from ultralytics import YOLO
 
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 def main():
     model = YOLO("yolov8s.pt")  # 載入模型
