@@ -62,7 +62,7 @@ def process_image(input_path, output_path):
 
 def processing(img):
     """圖片處理"""
-    processed_img = cv2.cvtColor(processed_img, cv2.COLOR_BGR2GRAY)  # 轉為灰階
+    processed_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)  # 轉為灰階
     processed_img = cv2.Canny(processed_img, 100, 200)
     return processed_img
 
