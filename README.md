@@ -117,6 +117,28 @@ GIT網址: [GIT這邊😺](https://github.com/YuXuan20040221/GDpj)
 - `img`: 處理前圖片
 - `processed_img`: 處理後圖片
 
+### - model (yolov8s_customX)
+
+|檔案|作用|
+|----|----|
+|args.yaml|記錄訓練時的超參數|
+|F1.png	|F1-score 曲線（模型準確性指標）|
+|results.csv|記錄訓練過程數據|
+|results.png|訓練結果的圖表（loss, mAP, precision, recall）|
+|train_batch0.png|訓練圖片 + 標註框 預覽|
+|val_batch0.png	|驗證圖片 + 標註框 預覽|
+|confusion_matrix.png|	類別混淆矩陣（查看哪些類別容易搞混）|
+|weights/best.pt|最好的模型（可用於推論）|
+|weights/last.pt|最後一輪的模型|
+#### - args.yaml
+紀錄訓練時用的各參數
+#### - F1.png
+F1-score 曲線，記錄訓練進展(上升=變好)
+#### - result
+損失（loss）曲線 📉：顯示模型的損失下降情況
+mAP（均值平均精度）曲線 🎯：衡量模型對不同 IoU 門檻的表現
+精準度 & 召回率曲線 🔍：顯示偵測的準確性
+
 ## 下載項目
 - numpy: 建立數值矩陣
 - OpenCV: 影像處理
@@ -125,7 +147,10 @@ GIT網址: [GIT這邊😺](https://github.com/YuXuan20040221/GDpj)
 
 ## 學程式
 
-OpenCV官網 :
+OpenCV官網 : 
 [OpenCV](https://docs.opencv.org/4.x/)
+
+YOLO資料解讀:
+[训练结果](https://blog.csdn.net/matt45m/article/details/135620472)
 
 ## 資料集
