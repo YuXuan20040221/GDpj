@@ -1,26 +1,38 @@
 task: detect
+# detect 物件偵測 | segment 分割 | classify 分類
 mode: train
+# train 訓練 | predict 推理 | export 匯出
 model: yolov8s.pt
 data: datasets/train.yaml
 epochs: 20
+# 圈數
 time: null
 patience: 100
+# 若 100 個 epoch 沒有改善，則提早結束訓練
 batch: 16
+# 每批處理 16 張影像
 imgsz: 640
 save: true
 save_period: -1
+# 每 N 個 epoch 儲存一次（-1 = 只存最後的最佳權重）
 cache: false
+# 是否快取影像（true = 加速，但需大量 RAM）
 device: null
+# 設備（null = 自動選擇 GPU/CPU）
 workers: 8
+# 資料讀取執行緒數（多核 CPU 可調高，加速數據載入）
 project: model
 name: yolov8s_custom3
 exist_ok: false
 pretrained: true
+# 是否使用 預訓練權重
 optimizer: auto
+# 自動選擇優化器（通常是 AdamW）
 verbose: true
 seed: 0
 deterministic: true
 single_cls: false
+# 是否將所有物件視為 單一類別
 rect: false
 cos_lr: false
 close_mosaic: 10
@@ -30,6 +42,7 @@ fraction: 1.0
 profile: false
 freeze: null
 multi_scale: false
+# 是否 多尺度訓練（提升泛化能力，但訓練變慢）
 overlap_mask: true
 mask_ratio: 4
 dropout: 0.0
@@ -38,8 +51,10 @@ split: val
 save_json: false
 save_hybrid: false
 conf: null
+# 信心閾值（預測時小於該值的物件將被忽略）
 iou: 0.7
 max_det: 300
+# 最大檢測目標數量
 half: false
 dnn: false
 plots: true
@@ -48,6 +63,7 @@ vid_stride: 1
 stream_buffer: false
 visualize: false
 augment: false
+# 推理時是否使用 測試時增強
 agnostic_nms: false
 classes: null
 retina_masks: false
