@@ -7,7 +7,7 @@ from ultralytics import YOLO
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 def main():
-    model = YOLO("model/yolov8s_custom3/weights/best.pt")  # 載入模型
+    model = YOLO("yolov8n.pt")  # 載入模型
 
     # 檢查是否有輸入圖片路徑
     if len(sys.argv) < 2:
