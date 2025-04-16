@@ -37,18 +37,15 @@ def main():
     cv2.destroyAllWindows()
 
 
-def predict(model, img):
-    results = model(img, save=True)  # 進行物件偵測，並存檔
+def predict(model, img_path):
+    results = model(img_path, save=True)
 
-    # 取得 YOLO 存放的資料夾
-    save_dir = results[0].save_dir  # YOLO 會自動存圖片的資料夾
-    filename = os.path.basename(img)  # 取得圖片檔名
+    save_dir = results[0].save_dir
+    filename = os.path.basename(img_path)
+    output_path = os.path.join(save_dir, filename)
 
-    output_path = os.path.join(save_dir, filename)  # 組合路徑
-    print(f"✅ 處理後的圖片儲存於: {output_path}")  # 確認儲存位置
-
+    print(f"✅ {filename} 處理完成 → {output_path}")
     return output_path
-
 
 if __name__ == "__main__":
     main()

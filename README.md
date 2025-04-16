@@ -91,15 +91,19 @@ GIT網址: [GIT這邊😺](https://github.com/YuXuan20040221/GDpj)
 # 設定
 
 ## 目錄架構
-```
-|-- *dataset
-|    |--origin_data (輸入資料集)  
-|    |--processed_data (輸出資料集)   
-|-- *env
+```  
+|-- env
 |--img_processing  
 |    |--main.py (讀取圖片)  
 |    |--process_images.py (處理圖片)  
 |--train_model
+|    |-- datasets
+|    |    |--train
+|    |    |--vaild
+|    |    |--Processed
+|    |    |--train.yaml
+|    |-- model
+|    |-- runs
 |    |--train_model.py (訓練模型)
 |    |--test_model.py (測試模型)
 |--.gitignore  
