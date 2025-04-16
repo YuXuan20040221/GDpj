@@ -7,6 +7,9 @@ from torch.utils.data import DataLoader
 import time
 import os
 
+# 安裝pip install torch torchvision
+
+
 # 設定設備
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
