@@ -5,13 +5,12 @@ import os
 def process_image(input_path, output_path):
     """讀取圖片、進行處理、存圖片"""
     try:
-        #image = cv2.imread(input_path, cv2.IMREAD_GRAYSCALE)  # 直接讀取灰階圖片
-        image = cv2.imread(input_path)  # 保留彩色圖
+        image = cv2.imread(input_path)
         if image is None:
             print(f"⚠️ 無法讀取 {input_path}")
             return False
 
-        # 處理圖片（僅視角校正）
+        # 處理圖片
         processed_image = processing(image)
 
         # 確保輸出資料夾存在
@@ -30,18 +29,34 @@ def process_image(input_path, output_path):
         return False
 
 def processing(img):
-    """影像處理：僅進行視角校正"""
-    h, w = img.shape[:2]  # ✅ 改這裡，支援彩色圖片
+    """影像處理：視角校正 + 光源校正 + 提高對比度 + 濾波"""
+    h, w = img.shape[:2]
 
     # 視角校正
     src_pts = np.float32([
-        [w * 0.1, h * 0.55],  # 左上
-        [w * 1.0, h * 0.55],  # 右上
-        [w * 0.1, h * 0.665],  # 左下
-        [w * 0.9, h * 0.665]   # 右下
+        [w * 0.1, h * 0.55],
+        [w * 1.0, h * 0.55],
+        [w * 0.1, h * 0.665],
+        [w * 0.9, h * 0.665]
     ])
     dst_pts = np.float32([[0, 0], [w, 0], [0, h], [w, h]])
     matrix = cv2.getPerspectiveTransform(src_pts, dst_pts)
     corrected = cv2.warpPerspective(img, matrix, (w, h))
 
-    return corrected
+    # 光源校正
+    lab = cv2.cvtColor(corrected, cv2.COLOR_BGR2LAB)
+    l, a, b = cv2.split(lab)
+    clahe = cv2.createCLAHE(clipLimit=1.5, tileGridSize=(8, 8))
+    cl = clahe.apply(l)
+    merged = cv2.merge((cl, a, b))
+    corrected_light = cv2.cvtColor(merged, cv2.COLOR_LAB2BGR)
+
+    # 增強對比度
+    alpha = 1.2
+    beta = 2.5
+    enhanced = cv2.convertScaleAbs(corrected_light, alpha=alpha, beta=beta)
+
+    # 加入濾波器（高斯模糊）
+    blurred = cv2.GaussianBlur(enhanced, (3, 3), 0)
+
+    return blurred
