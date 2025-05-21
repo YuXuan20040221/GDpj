@@ -56,7 +56,9 @@ def processing(img):
     beta = 2.5
     enhanced = cv2.convertScaleAbs(corrected_light, alpha=alpha, beta=beta)
 
-    # 加入濾波器（高斯模糊）
-    blurred = cv2.GaussianBlur(enhanced, (3, 3), 0)
+    # 雙邊濾波 (Bilateral Filter)
+    # 優點：能保留邊緣的同時去除雜訊（比 Gaussian 更聰明）
+    #適用：需要去除雜訊又不想模糊邊界時
+    blurred = cv2.bilateralFilter(enhanced, d=9, sigmaColor=75, sigmaSpace=75)
 
     return blurred
